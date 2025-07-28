@@ -1,69 +1,77 @@
-README - TWITTER AUTO TOOL
-=============================
+📌 DESKRIPSI
+---------------
+Script otomatisasi ini digunakan untuk menjalankan aksi otomatis pada platform X (sebelumnya Twitter), seperti:
+- Auto Follow
+- Auto Retweet
+- Auto Komen
+- Auto Quote
+- Pemrosesan cookies
 
-📌 DESKRIPSI:
-Script Python ini dibuat untuk mengotomatiskan interaksi di platform Twitter/X menggunakan login cookies. Tersedia beberapa fitur utama yang bisa digunakan untuk banyak akun sekaligus, seperti:
-1. Auto Follow
-2. Auto Retweet
-3. Auto Komentar Massal
-4. Validasi & Format Cookies
+Script ini memanfaatkan Selenium WebDriver untuk mengendalikan browser dan login menggunakan cookies dari beberapa akun.
 
-⚙️ FITUR UTAMA:
+📁 STRUKTUR FILE YANG DIPERLUKAN
 ----------------------------------
-✅ Menu 0 - Validasi Cookies:
-   - Memformat cookies mentah dari file `cookies.txt` menjadi `cookies.json`.
-   - Format `cookies.txt`: JSON per akun, per akun satu baris dibawahnya.
+Pastikan file berikut tersedia dalam direktori yang sama:
+1. cookies.txt             → berisi cookies mentah dari browser (multi akun)
+2. cookies.json            → file hasil proses cookies.txt
+3. komentartwitter.txt     → isi komentar untuk fitur Auto Komen (satu komentar per akun, pisahkan dengan enter 2x)
+4. quote.txt               → isi teks quote (satu quote per akun, pisahkan dengan enter 2x)
 
-✅ Menu 1 - Auto Follow:
-   - Memfollow akun Twitter/X dari daftar username/profil yang kamu masukkan.
+🧾 INSTALASI DEPENDENSI
+--------------------------
+Sebelum menjalankan script, install semua dependensi Python berikut:
 
-✅ Menu 2 - Auto Retweet:
-   - Me-retweet postingan yang kamu masukkan (bisa banyak sekaligus).
+pip install selenium pyfiglet colorama webdriver-manager
 
-✅ Menu 3 - Auto Komentar Massal:
-   - Setiap akun memberikan komentar berbeda (berdasarkan urutan) ke satu/lebih postingan target.
-   - Komentar diambil dari file `komentar.txt` (blok komentar per akun dipisah 1 baris kosong).
+📦 LIBRARY YANG DIGUNAKAN
+--------------------------
+- selenium
+- pyfiglet
+- colorama
+- json, os, time, re, random, glob, traceback (built-in)
+- webdriver-manager
 
-🗃️ STRUKTUR FILE YANG DIPERLUKAN:
+💻 CARA MENJALANKAN SCRIPT
+----------------------------
+1. Jalankan script dengan perintah:
+python namascriptkamu.py
+
+2. Pilih menu yang tersedia:
+   [0] Proses & Simpan Cookies dari cookies.txt ke cookies.json  
+   [1] Jalankan Auto Follow  
+   [2] Jalankan Auto Retweet  
+   [3] Jalankan Auto Komen  
+   [4] Jalankan Auto Quote  
+   [5] Keluar dari program  
+
+📂 FORMAT COOKIES.TXT
+-------------------------
+- Masukkan cookies dari ekstensi seperti "EditThisCookie" (Chrome)
+- Letakkan cookies beberapa akun secara berurutan di satu file dengan pemisah antar akun:
+  [ {cookie1}, {cookie2}, ... ]
+  [ {cookie1}, {cookie2}, ... ]
+
+🗂 FORMAT FILE KOMENTAR & QUOTE
 ----------------------------------
-1. `cookies.txt`       ➜ File cookies mentah (per akun satu baris dibawahnya).
-2. `cookies.json`      ➜ Hasil dari Menu 0 (cookie yang valid).
-3. `komentar.txt`      ➜ Komentar untuk Menu 3 (Pisahkan setiap komentar antar akun dengan 1 baris kosong, 1 komentar  = 1 akun).
-4. `chromedriver.exe`  ➜ Pastikan Chrome Driver cocok dengan versi Google Chrome.
+- komentartwitter.txt → setiap komentar dipisah dengan dua baris kosong
+- quote.txt → setiap baris quote dipisah dengan dua baris kosong
 
-📦 DEPENDENSI YANG WAJIB DIPASANG:
-----------------------------------
-Install semua kebutuhan dengan perintah berikut:
+🛠 FITUR YANG TERSEDIA
+-------------------------
+✅ Login otomatis menggunakan cookies  
+✅ Auto Follow akun target  
+✅ Auto Retweet postingan tertentu  
+✅ Auto Komentar ke tweet dengan komentar per akun  
+✅ Auto Quote postingan dengan teks yang berbeda per akun  
+✅ Support banyak akun  
 
-pip install selenium
+🧩 CATATAN TAMBAHAN
+-------------------------
+- Script menggunakan mode headless, jadi Chrome akan berjalan di background.
+- Jeda antar aksi dan akun bisa diatur manual di bagian:
+  JEDA_ANTAR_AKSI_DETIK = (5, 10)
+  JEDA_ANTAR_AKUN_DETIK = (20, 30)
+- Jika cookies salah atau kadaluarsa, login akan gagal dan akun dilewati.
 
-🧠 CARA MENJALANKAN:
-----------------------------------
-1. Jalankan script dengan: 
-   python namascript.py
-
-2. Ikuti petunjuk menu di terminal:
-   - Gunakan dulu Menu 0 untuk mengubah `cookies.txt` ➜ `cookies.json`
-   - Gunakan Menu 1, 2, atau 3 sesuai kebutuhan
-
-🛠️ CATATAN PENTING:
-----------------------------------
-- Script ini bekerja secara **headless** (tanpa membuka browser secara nyata).
-- Pastikan `cookies.txt` valid dan hasil export dari browser (saran gunakan ekstensi berikut : https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm).
-- Jangan gunakan akun utama sebelum diuji dulu.
-- Tidak menjamin akun bebas dari suspend jika digunakan berlebihan/spam.
-
-📁 CONTOH FORMAT `cookies.txt`:
-----------------------------------
-[
-  { "name": "auth_token", "value": "xxxx", ... },
-  { "name": "ct0", "value": "xxxx", ... },
-  ...
-]
-
-⏱️ JEDA OTOMATIS:
-----------------------------------
-- Jeda antar akun: 1–2 menit (acak)
-- Jeda antar aksi (follow/retweet/komentar): 20–45 detik (acak)
-
-----------------------------------
+-------------------------
+Gunakan script ini dengan bijak dan tanggung jawab.Jangan gunakan secara berlebihan yang dapat menyebabkan akun terkena limit, restrict, atau banned.Beristirahatlah di antara sesi agar aman dari deteksi sistem. Selalu cek hasil dengan kepala dingin dan tidak tergesa-gesa.Script ini adalah alat bantu, bukan alat curang.
