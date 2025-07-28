@@ -46,7 +46,7 @@ python namascriptkamu.py
 
 📂 FORMAT COOKIES.TXT
 -------------------------
-- Masukkan cookies dari ekstensi seperti "EditThisCookie" (Chrome)
+- Masukkan cookies dari ekstensi berikut : https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm.
 - Letakkan cookies beberapa akun secara berurutan di satu file dengan pemisah antar akun:
   [ {cookie1}, {cookie2}, ... ]
   [ {cookie1}, {cookie2}, ... ]
